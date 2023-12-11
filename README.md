@@ -6,7 +6,7 @@ Critérios de Ranson são regras para predizer a gravidade de uma pancreatite ag
 
 O aplicativo consiste de uma tela com um formulário. Esta tela fornecerá os campos para calcular os critérios de Ranson para um paciente.
 
-<div style="margin-top: 30px; background-color: red; display: flex; flex-direction: column; width: 50%; gap: 20px;">
+<div>
   <img src="images/form-01.png"/>
   <img src="images/form-02.png"/>
 </div>
