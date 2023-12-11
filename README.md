@@ -1,16 +1,7 @@
-# controle_criterios_ranson
+# controle-criterios-ranson
 
-A new Flutter project.
+Aplicativo para auxiliar os médicos hospitalistas a controlarem os critérios de Ranson de um paciente.
 
-## Getting Started
+Critérios de Ranson são regras para predizer a gravidade de uma pancreatite aguda. Elas foram introduzido em 1974 pelo cirurgião inglês John Ranson (1938–1995). Pancreatite é uma inflamação do Pâncreas.
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+O aplicativo consiste de uma tela com um formulário. Esta tela fornecerá os campos para calcular os critérios de Ranson para um paciente.
