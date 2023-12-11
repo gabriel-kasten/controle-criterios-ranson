@@ -73,113 +73,119 @@ class _PatientFormState extends State<PatientForm> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: const Text('Novo paciente'),
+        title: const Text('Adicionar Paciente'),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Form(
-          key: _formKey,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              TextFormField(
-                controller: nameController,
-                decoration: const InputDecoration(labelText: 'Nome'),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Por favor, insira o nome do paciente.';
-                  }
-                  return null;
-                },
-              ),
-              TextFormField(
-                controller: ageController,
-                decoration: const InputDecoration(labelText: 'Idade'),
-                keyboardType: TextInputType.number,
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Por favor, insira a idade do paciente.';
-                  }
-                  return null;
-                },
-              ),
-              TextFormField(
-                controller: leukocytesController,
-                decoration: const InputDecoration(labelText: 'Leucócitos'),
-                keyboardType: TextInputType.number,
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Por favor, insira o número de leucócitos.';
-                  }
-                  return null;
-                },
-              ),
-              TextFormField(
-                controller: glucoseController,
-                decoration: const InputDecoration(labelText: 'Glicemia'),
-                keyboardType: TextInputType.number,
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Por favor, insira o valor da glicemia.';
-                  }
-                  return null;
-                },
-              ),
-              TextFormField(
-                controller: astController,
-                decoration: const InputDecoration(labelText: 'AST/TGO'),
-                keyboardType: TextInputType.number,
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Por favor, insira o valor de AST/TGO.';
-                  }
-                  return null;
-                },
-              ),
-              TextFormField(
-                controller: ldhController,
-                decoration: const InputDecoration(labelText: 'LDH'),
-                keyboardType: TextInputType.number,
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Por favor, insira o valor de LDH.';
-                  }
-                  return null;
-                },
-              ),
-              CheckboxListTile(
-                title: const Text('Litíase Biliar'),
-                value: hasGallstones,
-                onChanged: (bool? value) {
-                  if (value != null) {
-                    setState(() {
-                      hasGallstones = value;
-                    });
-                  }
-                },
-              ),
-              SizedBox(height: 20),
-              ElevatedButton(
-                onPressed: () {
-                  if (_formKey.currentState!.validate()) {
-                    calculateScore();
-                    _showResultDialog();
-                  }
-                },
-                child: const Text('Calcular'),
-              ),
-              SizedBox(height: 20),
-              Visibility(
-                visible: score > 0,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text('Pontuação: $score'),
-                    Text('Mortalidade: $mortality%'),
-                  ],
+      body: Center(
+        child: Padding(
+          padding: const EdgeInsets.all(24.0),
+          child: Form(
+            key: _formKey,
+            child: Column(
+              mainAxisAlignment:
+                  MainAxisAlignment.center, // Centraliza no eixo principal
+              children: <Widget>[
+                TextFormField(
+                  controller: nameController,
+                  decoration: const InputDecoration(labelText: 'Nome'),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Por favor, insira o nome do paciente.';
+                    }
+                    return null;
+                  },
                 ),
-              ),
-            ],
+                TextFormField(
+                  controller: ageController,
+                  decoration: const InputDecoration(labelText: 'Idade'),
+                  keyboardType: TextInputType.number,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Por favor, insira a idade do paciente.';
+                    }
+                    return null;
+                  },
+                ),
+                TextFormField(
+                  controller: leukocytesController,
+                  decoration:
+                      const InputDecoration(labelText: 'Leucócitos - cél./mm3'),
+                  keyboardType: TextInputType.number,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Por favor, insira o número de leucócitos.';
+                    }
+                    return null;
+                  },
+                ),
+                TextFormField(
+                  controller: glucoseController,
+                  decoration:
+                      const InputDecoration(labelText: 'Glicemia - mmol/L'),
+                  keyboardType: TextInputType.number,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Por favor, insira o valor da glicemia.';
+                    }
+                    return null;
+                  },
+                ),
+                TextFormField(
+                  controller: astController,
+                  decoration:
+                      const InputDecoration(labelText: 'AST/TGO - UI/L'),
+                  keyboardType: TextInputType.number,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Por favor, insira o valor de AST/TGO.';
+                    }
+                    return null;
+                  },
+                ),
+                TextFormField(
+                  controller: ldhController,
+                  decoration: const InputDecoration(labelText: 'LDH - UI/L'),
+                  keyboardType: TextInputType.number,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Por favor, insira o valor de LDH.';
+                    }
+                    return null;
+                  },
+                ),
+                CheckboxListTile(
+                  title: const Text('Litíase Biliar'),
+                  value: hasGallstones,
+                  onChanged: (bool? value) {
+                    if (value != null) {
+                      setState(() {
+                        hasGallstones = value;
+                      });
+                    }
+                  },
+                ),
+                SizedBox(height: 20),
+                ElevatedButton(
+                  onPressed: () {
+                    if (_formKey.currentState!.validate()) {
+                      calculateScore();
+                      _showResultDialog();
+                    }
+                  },
+                  child: Text('Calcular'),
+                ),
+                SizedBox(height: 20),
+                Visibility(
+                  visible: score > 0,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text('Pontuação: $score'),
+                      Text('Mortalidade: $mortality%'),
+                    ],
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
@@ -191,25 +197,28 @@ class _PatientFormState extends State<PatientForm> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text('Resultado'),
-          content: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text('Pontuação: $score'),
-              Text('Mortalidade: $mortality%'),
-              Text(
-                isPancreatitisGrave
-                    ? 'Pancreatite Grave'
-                    : 'Pancreatite não Grave',
-              ),
-            ],
+          title: Text('Resultado'),
+          content: Container(
+            height: 150.0, // Altura fixa desejada
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text('Pontuação: $score'),
+                Text('Mortalidade: $mortality%'),
+                Text(
+                  isPancreatitisGrave
+                      ? 'Pancreatite Grave'
+                      : 'Pancreatite não Grave',
+                ),
+              ],
+            ),
           ),
           actions: <Widget>[
             TextButton(
               onPressed: () {
                 Navigator.of(context).pop();
               },
-              child: const Text('OK'),
+              child: Text('OK'),
             ),
           ],
         );
